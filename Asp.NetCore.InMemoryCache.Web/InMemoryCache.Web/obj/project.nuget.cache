@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "V9tlHepr8gpKS7xRtGqz5DUMi7axRB0aphGtaE4BkOu3VxBqgAw5fR6s5s5ngdMrOxVyDDCvXaOoDS60Vt5e/g==",
+  "dgSpecHash": "/iL5CpH5luDg7m8CvUWHc0VHijMSUz1oEnJ8c8o41RZzRLCIAHWHTf7dRikkw9JlxFk68xxVESDMaCUM5Ng/Ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\burak.ipekci\\Documents\\GitHub\\InMemoryCache\\Asp.NetCore.InMemoryCache.Web\\InMemoryCache.Web\\InMemoryCache.Web.csproj",
+  "projectFilePath": "C:\\Users\\burak.ipekci\\Documents\\GitHub\\InMemoryCache-Demo\\Asp.NetCore.InMemoryCache.Web\\InMemoryCache.Web\\InMemoryCache.Web.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
