@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InMemoryCache.Web.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace InMemoryCache.Web.Controllers
@@ -27,6 +28,10 @@ namespace InMemoryCache.Web.Controllers
                
 
                 _memoryCache.Set<string>("time", DateTime.Now.ToString(),option);
+
+
+                Products p = new Products { Id=1 , Name="Pencil",Price=100};
+                _memoryCache.Set<Products>("product:1", p);
             }
             return View();
         }
@@ -41,6 +46,7 @@ namespace InMemoryCache.Web.Controllers
 
             _memoryCache.TryGetValue("time", out string zamanCache);
             ViewBag.Time = zamanCache;
+            _memoryCache.Get<Products>("product:1");
 
             /*ViewBag.zaman=_memoryCache.Get<string>("time"); *///key ile alınacak datayı seçtik
             return View();
