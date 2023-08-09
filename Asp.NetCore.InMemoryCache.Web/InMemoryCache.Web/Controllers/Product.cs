@@ -22,7 +22,9 @@ namespace InMemoryCache.Web.Controllers
 
                 option.SlidingExpiration= TimeSpan.FromSeconds(10);               //Dataya eriştiğimiz sürece 10 saniye ömrünü uzatacak, 10 saniye erişmezsek cacheden silinecek
 
-
+                option.Priority = CacheItemPriority.High;//hafıza dolduğunda Time Key deki veriler benim için önemli bunu silme
+                option.Priority = CacheItemPriority.Low;//hafıza dolduğunda Time Key deki veriler benim için önemli değil bunu sil
+               
 
                 _memoryCache.Set<string>("time", DateTime.Now.ToString(),option);
             }
