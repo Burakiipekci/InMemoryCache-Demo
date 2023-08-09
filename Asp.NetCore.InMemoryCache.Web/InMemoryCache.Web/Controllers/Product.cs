@@ -12,14 +12,35 @@ namespace InMemoryCache.Web.Controllers
             _memoryCache = memoryCache;
         }
 
-        public IActionResult Index()
-        {
-            _memoryCache.Set<string>("time", DateTime.Now.ToString());//Cachelenecek verimizi ve bir key girdik.
+        public IActionResult Index() { 
+       
+         
+            if (!_memoryCache.TryGetValue("time", out string zamanCache))    // zaman keyinde data varmı diye bakılıyor
+            {
+                MemoryCacheEntryOptions option = new MemoryCacheEntryOptions();
+                     /* option.AbsoluteExpiration = DateTime.Now.AddSeconds(30);*/     // 30 saniye sonra hafızadan siler
+
+                option.SlidingExpiration= TimeSpan.FromSeconds(10);               //Dataya eriştiğimiz sürece 10 saniye ömrünü uzatacak, 10 saniye erişmezsek cacheden silinecek
+
+
+
+                _memoryCache.Set<string>("time", DateTime.Now.ToString(),option);
+            }
             return View();
         }
         public IActionResult Show()
         {
-            ViewBag.zaman=_memoryCache.Get<string>("time"); //key ile alınacak datayı seçtik
+            //_memoryCache.Remove("zaman");        //Keye ait cache kaldırır.
+
+            //_memoryCache.GetOrCreate<string>("time", entry =>
+            //{
+            //    return DateTime.Now.ToString();
+            //});           //  Time Keyinde sahip değeri almaya çalışır eğer yoksa kendisi oluşturur.
+
+            _memoryCache.TryGetValue("time", out string zamanCache);
+            ViewBag.Time = zamanCache;
+
+            /*ViewBag.zaman=_memoryCache.Get<string>("time"); *///key ile alınacak datayı seçtik
             return View();
         }
     }
